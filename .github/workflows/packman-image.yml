@@ -9,10 +9,10 @@ jobs:
   building image:
     runs-on: ubuntu-latest
     steps:
+        uses: actions/checkout@v2
       - name: Displaying a message
         run: echo "Ready!"
 
       - name: CreateImage
-        uses: actions/checkout@v2
         run: docker image build -t primary_packman .
 
