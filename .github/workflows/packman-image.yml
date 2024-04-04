@@ -36,7 +36,7 @@ jobs:
       - name: RunTrivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: docker.io/library/packman
+          image-ref: packman:latest
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: packman
-          path: /tmp/packman.tar
+          path: docker.io/library/packman
 
   push_image:
     runs-on: ubuntu-latest
