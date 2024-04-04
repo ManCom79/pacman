@@ -70,7 +70,7 @@ jobs:
         run: 
           docker image tag packman profmenko1979/packman:latest
           #docker push packman:latest
-          #docker push username/reponame:imagename
+          docker push profmenko1979/packman:latest
 
 
       
