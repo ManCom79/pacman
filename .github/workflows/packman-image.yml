@@ -57,8 +57,12 @@ jobs:
           name: packman
           path: /tmp
 
-      #- name: Push To Docker Hub
-      #  run: docker push ${{ secrets.DOCKER_USERNAME }}/primary_packman
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          tags: packman:latest
+          outputs: type=docker,dest=/tmp/packman.tar
 
 
       
