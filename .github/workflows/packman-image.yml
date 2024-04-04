@@ -20,23 +20,20 @@ jobs:
       - name: Displaying a message
         run: echo "Ready!"
 
-      #- name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      #- name: Build and export
-      #  uses: docker/build-push-action@v5
-      #  with:
-      #    context: .
-      #    tags: packman:latest
-      #    outputs: type=docker,dest=/tmp/packman.tar
-
-      - name: Image Build
-        run: docker build -t packman .
+      - name: Build and export
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          tags: packman:latest
+          outputs: type=docker,dest=/tmp/packman.tar
 
       - name: RunTrivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: packman:latest
+          image-ref: /tmp/packman.tar
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
