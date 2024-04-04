@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: packman
-          path: docker.io/library/packman
+          path: /tmp/packman.tar
 
   push_image:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: packman
-          path: docker.io/library/
+          path: /tmp
 
       - name: Load Docker image
         run: docker load -i /tmp/packman.tar
