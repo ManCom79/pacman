@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  build_packman_image:
+  build_test_packman_image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,9 +18,6 @@ jobs:
       - name: CreateImage
         run: docker image build -t primary_packman .
 
-  test_image:
-    runs-on: ubuntu-latest
-    steps:
       - name: RunTrivy
         uses: aquasecurity/trivy-action@master
         with:
@@ -33,7 +30,7 @@ jobs:
 
   push_image:
     runs-on: ubuntu-latest
-    needs: test_image
+    needs: uild_test_packman_image
     steps:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
