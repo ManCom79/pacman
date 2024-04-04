@@ -69,7 +69,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: 
           docker image tag packman profmenko1979/packman:latest
-          docker push profmenko1979/packman:latest
+          docker push profmenko1979/packman
 
 
       
