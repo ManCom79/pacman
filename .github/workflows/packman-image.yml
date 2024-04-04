@@ -58,7 +58,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: packman
-          path: /tmp
+          path: docker.io/library/packman
 
       - name: Load Docker image
         run: docker load -i /tmp/packman.tar
