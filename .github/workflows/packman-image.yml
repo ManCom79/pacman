@@ -33,7 +33,7 @@ jobs:
       - name: RunTrivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: /tmp/packman.tar
+          image-ref: 'packman'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
