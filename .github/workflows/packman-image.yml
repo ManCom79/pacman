@@ -63,6 +63,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          tags: packman-image:1.0.0-nginx
 
 
       
