@@ -58,12 +58,7 @@ jobs:
           path: /tmp
 
       - name: Push to Docker Hub
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: packman-image:1.0.0-nginx
+        docker tag packman profmenko1979/packman:latest
 
 
       
