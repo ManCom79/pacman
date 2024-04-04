@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: primary_packman
-          path: /tmp
+          path: /tmp/primary_packman
 
   push_image:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: primary_packman
-          path: /tmp
+          #path: /tmp/primary_packman
 
       #- name: Push To Docker Hub
       #  run: docker push ${{ secrets.DOCKER_USERNAME }}/primary_packman
