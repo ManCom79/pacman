@@ -15,24 +15,31 @@ jobs:
       - name: Displaying a message
         run: echo "Ready!"
 
-      - name: CreateImage
-        run: docker image build -t primary_packman .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: RunTrivy
-        uses: aquasecurity/trivy-action@master
+      - name: Build and export
+        uses: docker/build-push-action@v5
         with:
-          image-ref: 'primary_packman'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL'
+          context: .
+          tags: packman:latest
+          outputs: type=docker,dest=/tmp/packman.tar
+
+      #- name: RunTrivy
+      #  uses: aquasecurity/trivy-action@master
+      #  with:
+      #    image-ref: 'primary_packman'
+      #    format: 'table'
+      #    exit-code: '1'
+      #    ignore-unfixed: true
+      #    vuln-type: 'os,library'
+      #    severity: 'CRITICAL'
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: primary_packman
-          path: /tmp/primary_packman
+          name: packman
+          path: /tmp/packman.tar
 
   push_image:
     runs-on: ubuntu-latest
@@ -47,8 +54,8 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: primary_packman
-          #path: /tmp/primary_packman
+          name: packman
+          path: /tmp
 
       #- name: Push To Docker Hub
       #  run: docker push ${{ secrets.DOCKER_USERNAME }}/primary_packman
