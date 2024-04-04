@@ -58,7 +58,8 @@ jobs:
           path: /tmp
 
       - name: Push to Docker Hub
-        run: docker push profmenko1979/packman:latest
+        run: docker tag packman profmenko1979/packman:latest
+        #run: docker push profmenko1979/packman:latest
 
 
       
