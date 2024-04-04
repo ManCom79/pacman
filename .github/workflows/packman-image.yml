@@ -61,8 +61,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          tags: packman:latest
-          outputs: type=docker,dest=/tmp/packman.tar
+          file: ./Dockerfile
+          push: true
 
 
       
