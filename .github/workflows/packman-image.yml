@@ -36,7 +36,7 @@ jobs:
       - name: RunTrivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: packman:latest
+          image-ref: docker.io/library/packman
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
